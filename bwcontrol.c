@@ -28,8 +28,8 @@ PG_FUNCTION_INFO_V1(pg_get_status_ingest);
 PG_FUNCTION_INFO_V1(pg_create_kafka_connect);
 PG_FUNCTION_INFO_V1(pg_delete_kafka_connect);
 
-void _PG_init(void);
-void _PG_fini(void);
+//void _PG_init(void); //Metrix
+//void _PG_fini(void); //Metrix
 
 /* ------------------------------------------------
  * Maros
@@ -169,25 +169,25 @@ static struct curl_slist *g_curl_headers = NULL;
 /* ------------------------------------------------
  * Startup
  * ------------------------------------------------*/
-void _PG_init(void)
-{
-//    curl_global_init(CURL_GLOBAL_ALL);
-}
+//void _PG_init(void) //Metrix
+//{
+////    curl_global_init(CURL_GLOBAL_ALL);
+//}
 
 /* ------------------------------------------------
  * Shutdown
  * ------------------------------------------------*/
-void _PG_fini(void)
-{
-//    if ( g_curl )
-//    {
-//		curl_slist_free_all(g_curl_headers);
-//        curl_easy_cleanup(g_curl);
-//        g_curl = NULL;
-//    }
-//
-//    curl_global_cleanup();
-}
+//void _PG_fini(void) //Metrix
+//{
+////    if ( g_curl )
+////    {
+////		curl_slist_free_all(g_curl_headers);
+////        curl_easy_cleanup(g_curl);
+////        g_curl = NULL;
+////    }
+////
+////    curl_global_cleanup();
+//}
 
 /* ------------------------------------------------
  * pg_add_ingest_table().
@@ -461,7 +461,7 @@ pg_delete_kafka_connect(PG_FUNCTION_ARGS)
  * ---------------------------- */
 int check_bw_process(const char* db_name)
 {
-	char tmppath[MAXPGPATH];	
+	char tmppath[MAXPGPATH]="/tmp/bw.pid";//Metrix
 	char pidbuf[32];
 	FILE  *pidfp = NULL;
 	struct stat st;
